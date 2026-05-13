@@ -1,0 +1,40 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Reading Type</mat-label>
+    <mat-select formControlName="readingType">
+      @for (type of readingTypes; track type) {
+        <mat-option [value]="type">{{ type }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Condition Operator</mat-label>
+    <mat-select formControlName="conditionOperator">
+      @for (op of conditionOperators; track op) {
+        <mat-option [value]="op">{{ op }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Severity</mat-label>
+    <mat-select formControlName="severity">
+      @for (level of severityLevels; track level) {
+        <mat-option [value]="level">{{ level }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Field ID</mat-label>
+    <input matInput formControlName="fieldsId" type="number">
+  </mat-form-field>
+
+  <div class="actions">
+    <button mat-button type="button" (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+      Save Rule
+    </button>
+  </div>
+</form>
