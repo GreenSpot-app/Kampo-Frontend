@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ employee.getName() }}</mat-card-title>
+    <mat-card-subtitle>{{ employee.getEmail() }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Role:</strong> {{ showRole() }}</p>
+    <p><strong>Status:</strong> {{ showStatus() }}</p>
+    <p><strong>Field ID:</strong> {{ employee.getFieldId() }}</p>
+  </mat-card-content>
+</mat-card>
