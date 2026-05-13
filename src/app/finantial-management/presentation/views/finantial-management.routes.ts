@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
 
+const shell = () =>
+  import('./financial-shell/financial-shell').then((m) => m.FinancialShellComponent);
+
 const expenseList = () =>
   import('./expensive-list-component/expensive-list-component').then((m) => m.ExpenseListComponent);
 
@@ -18,10 +21,21 @@ const profitDashboard = () =>
   );
 
 export const FINANTIAL_MANAGEMENT_ROUTES: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'gastos' },
-  { path: 'gastos', loadComponent: expenseList },
-  { path: 'gastos/nuevo', loadComponent: expenseForm },
-  { path: 'ingresos', loadComponent: incomeList },
-  { path: 'ventas', loadComponent: saleList },
-  { path: 'rentabilidad', loadComponent: profitDashboard },
+  {
+    path: '',
+    loadComponent: shell,
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'gastos' },
+      {
+        path: 'gastos',
+        children: [
+          { path: '', loadComponent: expenseList },
+          { path: 'nuevo', loadComponent: expenseForm },
+        ],
+      },
+      { path: 'ingresos', loadComponent: incomeList },
+      { path: 'ventas', loadComponent: saleList },
+      { path: 'rentabilidad', loadComponent: profitDashboard },
+    ],
+  },
 ];
