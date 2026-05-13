@@ -16,11 +16,17 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'inventory-management',
+    loadChildren: () =>
+      import('./inventory-management/presentation/views/inventory-management.routes').then(
+        (m) => m.INVENTORY_MANAGEMENT_ROUTES,
+      ),
+  },
+  {
     path: 'finantial-management',
     loadChildren: () =>
       import('./finantial-management/presentation/views/finantial-management.routes').then(
         (m) => m.FINANTIAL_MANAGEMENT_ROUTES,
       ),
   },
-  { path: '', pathMatch: 'full', redirectTo: 'organization-management' },
-];
+  { path: '', pathMatch: 'full', redirectTo: 'organization-management' },]
