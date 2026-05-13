@@ -1,0 +1,147 @@
+{
+  "app": {
+    "title": "Kampo",
+    "tagline": "Tu campo en datos, tu negocio en control"
+  },
+  "nav": {
+    "organizations": "Organizaciones",
+    "fields": "Parcelas",
+    "seasons": "Temporadas",
+    "field_operations": "Operaciones de Campo",
+    "financial": "Finanzas",
+    "inventory": "Inventario",
+    "alerts": "Alertas",
+    "monitoring": "Monitoreo IoT",
+    "employees": "Empleados",
+    "subscription": "Suscripción",
+    "reports": "Reportes"
+  },
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "add": "Agregar",
+    "search": "Buscar",
+    "loading": "Cargando...",
+    "no_data": "Sin datos disponibles",
+    "actions": "Acciones",
+    "status": "Estado",
+    "date": "Fecha",
+    "name": "Nombre",
+    "description": "Descripción",
+    "back": "Volver"
+  },
+  "status": {
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "pending": "Pendiente",
+    "completed": "Completado",
+    "in_progress": "En progreso",
+    "cancelled": "Cancelado"
+  },
+  "organization": {
+    "title": "Organizaciones",
+    "new": "Nueva Organización",
+    "edit": "Editar Organización",
+    "ruc": "RUC",
+    "address": "Dirección",
+    "phone": "Teléfono",
+    "email": "Correo electrónico"
+  },
+  "fundo": {
+    "title": "Fundos",
+    "new": "Nuevo Fundo",
+    "location": "Ubicación",
+    "total_area": "Área total (ha)"
+  },
+  "field": {
+    "title": "Parcelas",
+    "new": "Nueva Parcela",
+    "area": "Área (ha)",
+    "soil_type": "Tipo de suelo",
+    "irrigation": "Sistema de riego"
+  },
+  "crop": {
+    "title": "Cultivos",
+    "scientific_name": "Nombre científico",
+    "variety": "Variedad",
+    "growth_cycle": "Ciclo de crecimiento (días)"
+  },
+  "season": {
+    "title": "Temporadas",
+    "new": "Nueva Temporada",
+    "start_date": "Fecha de inicio",
+    "end_date": "Fecha de fin",
+    "estimated_yield": "Rendimiento estimado (kg)"
+  },
+  "field_visit": {
+    "title": "Visitas de campo",
+    "new": "Nueva visita",
+    "technician": "Técnico",
+    "purpose": "Propósito",
+    "visit_date": "Fecha de visita"
+  },
+  "observation": {
+    "title": "Observaciones",
+    "type": "Tipo",
+    "severity": "Severidad",
+    "recommendation": "Recomendación"
+  },
+  "financial": {
+    "title": "Gestión Financiera",
+    "expenses": "Gastos",
+    "sales": "Ventas",
+    "amount": "Monto",
+    "category": "Categoría",
+    "total": "Total"
+  },
+  "inventory": {
+    "title": "Inventario",
+    "new": "Nuevo ítem",
+    "unit": "Unidad",
+    "min_stock": "Stock mínimo",
+    "location": "Ubicación",
+    "expiration": "Fecha de vencimiento",
+    "suppliers": "Proveedores"
+  },
+  "alert": {
+    "title": "Alertas",
+    "new_rule": "Nueva regla",
+    "severity": {
+      "high": "Alta",
+      "medium": "Media",
+      "low": "Baja"
+    }
+  },
+  "iot": {
+    "title": "Monitoreo IoT",
+    "sensors": "Sensores",
+    "readings": "Lecturas",
+    "serial": "Número de serie",
+    "brand": "Marca",
+    "model": "Modelo"
+  },
+  "employee": {
+    "title": "Empleados",
+    "new": "Nuevo empleado",
+    "dni": "DNI",
+    "role": "Cargo",
+    "start_date": "Fecha de ingreso",
+    "salary": "Salario"
+  },
+  "subscription": {
+    "title": "Suscripción",
+    "plan": "Plan",
+    "start_date": "Fecha de inicio",
+    "end_date": "Fecha de fin",
+    "price": "Precio mensual"
+  },
+  "report": {
+    "title": "Reportes",
+    "new": "Generar reporte",
+    "type": "Tipo de reporte",
+    "period": "Período",
+    "download": "Descargar"
+  }
+}

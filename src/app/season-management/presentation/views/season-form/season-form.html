@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>{{ isEdit ? 'Editar' : 'Nueva' }} temporada</h2>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="form-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>ID campo (lote)</mat-label>
+        <input matInput type="number" formControlName="fieldId" />
+        @if (form.get('fieldId')?.invalid && form.get('fieldId')?.touched) {
+          <mat-error>Campo obligatorio</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>ID cultivo</mat-label>
+        <input matInput type="number" formControlName="cropId" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre cultivo</mat-label>
+        <input matInput formControlName="cropName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="status">
+          @for (s of statusOptions; track s) {
+            <mat-option [value]="s">{{ s }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Inicio</mat-label>
+        <input matInput type="date" formControlName="startedAt" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-actions">
+      <button mat-button type="button" (click)="cancel()">Cancelar</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        <mat-icon>save</mat-icon>
+        {{ isEdit ? 'Actualizar' : 'Guardar' }}
+      </button>
+    </div>
+  </form>
+</div>

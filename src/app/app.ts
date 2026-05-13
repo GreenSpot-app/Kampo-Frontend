@@ -1,12 +1,16 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  template: `<router-outlet />`,
 })
 export class App {
-  protected readonly title = signal('kampo-frontend');
+  constructor(private translate: TranslateService) {
+    this.translate.addLangs(['es', 'en']);
+    this.translate.setDefaultLang('es');
+    this.translate.use('es');
+  }
 }
