@@ -1,23 +1,24 @@
-import { Employee } from '../../domain/model/entities/employee.entity';
-import { EmployeeRole } from '../../domain/model/enums/employee-role.enum';
-import { EmployeeStatus } from '../../domain/model/enums/employee-status.enum';
+import { Injectable } from '@angular/core';
+import { BaseAssembler } from '../../../shared/infrastructure/base-assembler';
 import { EmployeeResponse } from '../responses/employee.response';
 import { EmployeeResource } from '../responses/employee.resource';
+import { Employee } from '../../domain/model/entities/employee.entity';
 
-export class EmployeeAssembler {
+@Injectable({ providedIn: 'root' })
+export class EmployeeAssembler extends BaseAssembler<Employee, EmployeeResponse> {
 
-  static toEntityFromResponse(response: EmployeeResponse): Employee {
+  toEntityFromResponse(response: EmployeeResponse): Employee {
     return new Employee(
       response.id,
       response.name,
       response.email,
-      response.role as EmployeeRole,
-      response.status as EmployeeStatus,
+      response.role,
+      response.status,
       response.fieldId
     );
   }
 
-  static toResourceFromEntity(entity: Employee): EmployeeResource {
+  toResourceFromEntity(entity: Employee): EmployeeResource {
     return {
       name: entity.getName(),
       email: entity.getEmail(),
