@@ -1,0 +1,21 @@
+<div class="alert-view">
+  <div class="header">
+    <h1>Alert Management</h1>
+    <button mat-raised-button color="primary" (click)="onConfigureAlertRule()">
+      Configure Alert Rule
+    </button>
+  </div>
+
+  <app-alert-list
+    [alerts]="store.alerts()"
+    [isLoading]="store.isLoading()"
+    (markRead)="onMarkAlertRead($any($event))"
+    (selectAlert)="onSelectAlert($any($event))">
+  </app-alert-list>
+
+  @if (showForm) {
+    <app-alert-rule-form
+      (formClose)="showForm = false">
+    </app-alert-rule-form>
+  }
+</div>
