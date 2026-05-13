@@ -3,19 +3,19 @@ import { BaseEntity } from '../../../shared/infrastructure/base-entity';
 export class Fundo extends BaseEntity {
   private name: string;
   private organizationId: number;
-  private latitude: number;
-  private longitude: number;
+  private location: string;
+  private totalArea: number;
 
-  constructor(id: number, name: string, organizationId: number, latitude: number, longitude: number) {
+  constructor(id: number, name: string, organizationId: number, location: string, totalArea: number) {
     super(id);
     this.name = name;
     this.organizationId = organizationId;
-    this.latitude = latitude;
-    this.longitude = longitude;
+    this.location = location;
+    this.totalArea = totalArea;
   }
 
   getName(): string { return this.name; }
   getOrganizationId(): number { return this.organizationId; }
-  getLatitude(): number { return this.latitude; }
-  getLongitude(): number { return this.longitude; }
+  getLocation(): string { return this.location; }
+  getTotalArea(): number { return this.totalArea; }
 }

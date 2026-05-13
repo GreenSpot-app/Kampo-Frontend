@@ -3,13 +3,12 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SeasonResponse } from '../responses/season.response';
 import { SeasonResource } from '../responses/season.resource';
+import { environment } from '../../../../environments/environment';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class SeasonService {
   private readonly http = inject(HttpClient);
-  private readonly resourcePath = 'http://localhost:3000/seasons';
+  private readonly resourcePath = `${environment.apiBaseUrl}/seasons`;
 
   getByField(fieldId: number): Observable<SeasonResponse[]> {
     const params = new HttpParams().set('fieldId', String(fieldId));
@@ -31,7 +30,7 @@ export class SeasonService {
   endSeason(seasonId: number): Observable<SeasonResponse> {
     const now = new Date().toISOString();
     return this.http.patch<SeasonResponse>(`${this.resourcePath}/${seasonId}`, {
-      status: 'Finalizada',
+      status: 'ENDED',
       endedAt: now
     });
   }

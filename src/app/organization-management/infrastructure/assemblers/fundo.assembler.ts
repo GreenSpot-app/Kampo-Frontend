@@ -7,8 +7,8 @@ export class FundoAssembler {
       response.id,
       response.name,
       response.organizationId,
-      response.latitude,
-      response.longitude
+      response.location,
+      response.totalArea
     );
   }
 }

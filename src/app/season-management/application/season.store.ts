@@ -8,7 +8,7 @@ import { SeasonAssembler } from '../infrastructure/assemblers/season.assembler';
 @Injectable({ providedIn: 'root' })
 export class SeasonStore {
   private readonly seasonService = inject(SeasonService);
-
+  private assembler = new SeasonAssembler();
   readonly seasons = signal<Season[]>([]);
   readonly selectedSeasonId = signal<number | null>(null);
   readonly isLoading = signal<boolean>(false);
@@ -31,7 +31,7 @@ export class SeasonStore {
     this.error.set(null);
     this.seasonService.getByField(fieldId).subscribe({
       next: (responses: SeasonResponse[]) => {
-        const entities = responses.map((r) => SeasonAssembler.toEntityFromResponse(r));
+        const entities = responses.map((r) => this.assembler.toEntityFromResponse(r));
         this.seasons.set(entities);
       },
       error: (err) => {
@@ -61,7 +61,7 @@ export class SeasonStore {
 
   assignCropToSeason(seasonId: number, cropId: number): void {
     this.seasonService.assignCrop(seasonId, cropId).subscribe({
-      next: (res) => this.updateSeason(SeasonAssembler.toEntityFromResponse(res)),
+      next: (res) => this.updateSeason(this.assembler.toEntityFromResponse(res)),
       error: (err) => console.error(err),
     });
   }
@@ -69,7 +69,7 @@ export class SeasonStore {
   updateSeasonStatus(seasonId: number, status: SeasonStatus): void {
     this.seasonService.updateStatus(seasonId, status).subscribe({
       next: (res) => {
-        const updated = SeasonAssembler.toEntityFromResponse(res);
+        const updated = this.assembler.toEntityFromResponse(res);
         this.updateSeason(updated);
       },
       error: (err) => console.error(err),
@@ -79,7 +79,7 @@ export class SeasonStore {
   endSeason(seasonId: number): void {
     this.seasonService.endSeason(seasonId).subscribe({
       next: (res) => {
-        const updated = SeasonAssembler.toEntityFromResponse(res);
+        const updated = this.assembler.toEntityFromResponse(res);
         this.updateSeason(updated);
       },
       error: (err) => console.error(err),

@@ -1,12 +1,13 @@
-export class CropResponse {
-  id: number;
+import { BaseResponse } from '../../../shared/infrastructure/base-response';
+
+export class CropResponse extends BaseResponse {
   name: string;
   scientificName: string;
   variety: string;
   growthCycle: number;
 
   constructor() {
-    this.id = 0;
+    super(0);
     this.name = '';
     this.scientificName = '';
     this.variety = '';

@@ -1,5 +1,6 @@
-export class OrganizationResponse {
-  id: number;
+import { BaseResponse } from '../../../shared/infrastructure/base-response';
+
+export class OrganizationResponse extends BaseResponse {
   name: string;
   ruc: string;
   address: string;
@@ -7,7 +8,7 @@ export class OrganizationResponse {
   email: string;
 
   constructor() {
-    this.id = 0;
+    super(0);
     this.name = '';
     this.ruc = '';
     this.address = '';

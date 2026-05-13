@@ -1,38 +1,20 @@
-import { SeasonResponse } from '../responses/season.response';
-import { SeasonResource } from '../responses/season.resource';
-import { Season } from '../../domain/model/season.entity';
+import { BaseAssembler } from '../../../shared/infrastructure/base-assembler';
+import { Season} from '../../domain/model/season.entity';
 import { SeasonStatus } from '../../domain/model/season-status.enum';
+import { SeasonResponse } from '../responses/season.response';
 
-export class SeasonAssembler {
-
-  public static toEntityFromResponse(response: SeasonResponse): Season {
-    const startedAt = response.getStartedAt() ? new Date(response.getStartedAt()) : new Date();
-    const endedAt = response.getEndedAt() ? new Date(response.getEndedAt()!) : null;
-
+export class SeasonAssembler extends BaseAssembler<Season, SeasonResponse> {
+  toEntityFromResponse(response: SeasonResponse): Season {
+    const startedAt = response.startedAt ? new Date(response.startedAt) : new Date();
+    const endedAt = response.endedAt ? new Date(response.endedAt) : null;
     return new Season(
-      response.getId(),
-      response.getFieldId(),
-      response.getCropId(),
-      response.getCropName() ?? '',
-      SeasonAssembler.parseStatus(response.getStatus()),
+      response.id,
+      response.fieldId,
+      response.cropId,
+      response.cropName,
+      response.status as SeasonStatus,
       startedAt,
       endedAt
     );
-  }
-
-  public static toResourceFromEntity(entity: Season): SeasonResource {
-    return new SeasonResource(
-      entity.getFieldId(),
-      entity.getCropId(),
-      entity.getCropName(),
-      entity.getStatus(),
-      entity.getStartedAt().toISOString(),
-      entity.getEndedAt() ? entity.getEndedAt()!.toISOString() : null
-    );
-  }
-
-  private static parseStatus(value: string): SeasonStatus {
-    const allowed = Object.values(SeasonStatus) as string[];
-    return allowed.includes(value) ? (value as SeasonStatus) : SeasonStatus.PLANTING;
   }
 }

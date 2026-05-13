@@ -1,15 +1,16 @@
-export class FundoResponse {
-  id: number = 0;
-  name: string = '';
-  organizationId: number = 0;
-  latitude: number = 0;
-  longitude: number = 0;
+import { BaseResponse } from '../../../shared/infrastructure/base-response';
+
+export class FundoResponse extends BaseResponse {
+  name: string;
+  organizationId: number;
+  location: string;
+  totalArea: number;
 
   constructor() {
-    this.id = 0;
+    super(0);
     this.name = '';
     this.organizationId = 0;
-    this.latitude = 0;
-    this.longitude = 0;
+    this.location = '';
+    this.totalArea = 0;
   }
 }

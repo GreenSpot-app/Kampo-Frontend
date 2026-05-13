@@ -27,6 +27,7 @@ export class Season extends BaseEntity {
     this.endedAt = endedAt;
   }
 
+
   getFieldId(): number {
     return this.fieldId;
   }

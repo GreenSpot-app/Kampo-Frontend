@@ -1,5 +1,6 @@
-export class FieldResponse {
-  id: number;
+import { BaseResponse } from '../../../shared/infrastructure/base-response';
+
+export class FieldResponse extends BaseResponse {
   name: string;
   fundoId: number;
   area: number;
@@ -7,7 +8,7 @@ export class FieldResponse {
   irrigationType: string;
 
   constructor() {
-    this.id = 0;
+    super(0);
     this.name = '';
     this.fundoId = 0;
     this.area = 0;

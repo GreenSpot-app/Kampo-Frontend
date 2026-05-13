@@ -2,16 +2,12 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { OrganizationResponse } from '../responses/organization.response';
+import { environment } from '../../../../environments/environment';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class OrganizationService {
   private readonly http = inject(HttpClient);
-
-  private resourcePath: string = 'http://localhost:3000/organizations';
-
-  constructor() {}
+  private resourcePath = `${environment.apiBaseUrl}/organizations`;
 
   getAll(): Observable<OrganizationResponse[]> {
     return this.http.get<OrganizationResponse[]>(this.resourcePath);

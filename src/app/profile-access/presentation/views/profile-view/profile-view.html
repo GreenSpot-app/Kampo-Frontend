@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ 'employee.title' | translate }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    @if (store.isLoading) {
+      <p>{{ 'common.loading' | translate }}</p>
+    }
+    @if (user && !store.isLoading) {
+      <p><strong>{{ 'organization.email' | translate }}:</strong> {{ user.getEmail() }}</p>
+      <p><strong>{{ 'employee.dni' | translate }}:</strong> {{ user.getFirstName() }} {{ user.getLastName() }}</p>
+      <p><strong>{{ 'organization.phone' | translate }}:</strong> {{ user.getPhone() }}</p>
+    }
+  </mat-card-content>
+</mat-card>
