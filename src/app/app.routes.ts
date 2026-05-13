@@ -15,5 +15,12 @@ export const routes: Routes = [
         (m) => m.SEASON_ROUTES
       ),
   },
+  {
+    path: 'finantial-management',
+    loadChildren: () =>
+      import('./finantial-management/presentation/views/finantial-management.routes').then(
+        (m) => m.FINANTIAL_MANAGEMENT_ROUTES,
+      ),
+  },
   { path: '', pathMatch: 'full', redirectTo: 'organization-management' },
 ];

@@ -1,0 +1,11 @@
+<section>
+  @if (isLoading()) {
+    <p>Cargando gastos…</p>
+  } @else {
+    <ul>
+      @for (e of expenses(); track e.getId().getValue()) {
+        <li>{{ e.getDescription() }} — {{ e.getAmount().getAmount() }} {{ e.getAmount().getCurrency() }}</li>
+      }
+    </ul>
+  }
+</section>

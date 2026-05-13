@@ -1,0 +1,10 @@
+<section [style.color]="getMarginColor()">
+  @if (store.isLoading()) {
+    <p>Cargando rentabilidad…</p>
+  } @else if (store.profitability(); as p) {
+    <p>Margen: {{ p.getMargin() | number: '1.0-2' }}%</p>
+    <p>Beneficio neto: {{ p.getNetProfit().getAmount() }}</p>
+  } @else {
+    <p>Sin datos de rentabilidad.</p>
+  }
+</section>

@@ -1,0 +1,12 @@
+<section>
+  @if (isLoading()) {
+    <p>Cargando ventas…</p>
+  } @else {
+    <ul>
+      @for (s of sales(); track s.getId().getValue()) {
+        <li>{{ s.getCropName() }} — total {{ s.getTotalAmount().getAmount() }}</li>
+      }
+    </ul>
+    <p>Ingresos por ventas: {{ calculateTotalRevenue().getAmount() }}</p>
+  }
+</section>
