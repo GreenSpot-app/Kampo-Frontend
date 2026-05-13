@@ -1,23 +1,21 @@
-import { EmployeeRole } from '../enums/employee-role.enum'
-import { EmployeeStatus } from '../enums/employee-status.enum';
+import { BaseEntity } from '../../../../shared/infrastructure/base-entity';
 
-export class Employee {
-  private id: number;
+export class Employee extends BaseEntity {
   private name: string;
   private email: string;
-  private role: EmployeeRole;
-  private status: EmployeeStatus;
+  private role: string;
+  private status: string;
   private fieldId: number;
 
   constructor(
     id: number,
     name: string,
     email: string,
-    role: EmployeeRole,
-    status: EmployeeStatus,
+    role: string,
+    status: string,
     fieldId: number
   ) {
-    this.id = id;
+    super(id);
     this.name = name;
     this.email = email;
     this.role = role;
@@ -25,14 +23,13 @@ export class Employee {
     this.fieldId = fieldId;
   }
 
-  getId(): number { return this.id; }
   getName(): string { return this.name; }
   getEmail(): string { return this.email; }
-  getRole(): EmployeeRole { return this.role; }
-  getStatus(): EmployeeStatus { return this.status; }
+  getRole(): string { return this.role; }
+  getStatus(): string { return this.status; }
   getFieldId(): number { return this.fieldId; }
 
   setName(name: string): void { this.name = name; }
   setEmail(email: string): void { this.email = email; }
-  setRole(role: EmployeeRole): void { this.role = role; }
+  setRole(role: string): void { this.role = role; }
 }
