@@ -29,4 +29,11 @@ export const routes: Routes = [
         (m) => m.FINANTIAL_MANAGEMENT_ROUTES,
       ),
   },
+  {
+    path:'report-management',
+    loadChildren:()=>
+      import('./report/presentation/views/report.routes').then(
+        (m)=>m.REPORT_ROUTES,
+      ),
+  },
   { path: '', pathMatch: 'full', redirectTo: 'organization-management' },]
