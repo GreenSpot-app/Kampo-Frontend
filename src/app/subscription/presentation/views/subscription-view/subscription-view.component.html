@@ -1,0 +1,21 @@
+<div class="subscription-view">
+  <h2>My Subscriptions</h2>
+
+  <div *ngIf="isLoading" class="loading">Loading...</div>
+
+  <div class="subscriptions-list" *ngIf="!isLoading">
+    <app-subscription-card
+      *ngFor="let subscription of subscriptions"
+      [subscription]="subscription"
+      (onSelect)="onSelectSubscription($event)">
+    </app-subscription-card>
+  </div>
+
+  <app-subscription-actions
+    *ngIf="selectedSubscriptionId"
+    [selectedSubscriptionId]="selectedSubscriptionId"
+    (onPurchase)="onPurchaseSubscription()"
+    (onRenew)="onRenewSubscription(selectedSubscriptionId)"
+    (onCancel)="onCancelSubscription(selectedSubscriptionId)">
+  </app-subscription-actions>
+</div>

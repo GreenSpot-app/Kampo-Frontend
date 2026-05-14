@@ -1,0 +1,43 @@
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from '../../../domain/model/subscription.entity';
+import { SubscriptionStore } from '../../../application/subscription.store';
+
+@Component({
+  selector: 'app-subscription-view',
+  templateUrl: './subscription-view.component.html',
+  styleUrls: ['./subscription-view.component.css']
+})
+export class SubscriptionViewComponent implements OnInit {
+
+  subscriptions: Subscription[] = [];
+  selectedSubscriptionId: number = 0;
+  isLoading: boolean = false;
+
+  constructor(private store: SubscriptionStore) {}
+
+  ngOnInit(): void {
+    this.store.getSubscriptions();
+    this.subscriptions = this.store.subscriptions;
+    this.isLoading = this.store.isLoading;
+  }
+
+  onPurchaseSubscription(): void {
+    this.store.purchaseSubscription(
+      (this.subscriptions.find(s => s.getId() === this.selectedSubscriptionId) as any)?.plan,
+      (this.subscriptions.find(s => s.getId() === this.selectedSubscriptionId) as any)?.userId
+    );
+  }
+
+  onRenewSubscription(id: number): void {
+    this.store.renewSubscription(id);
+  }
+
+  onCancelSubscription(id: number): void {
+    this.store.cancelSubscription(id);
+  }
+
+  onSelectSubscription(id: number): void {
+    this.selectedSubscriptionId = id;
+    this.store.selectSubscription(id);
+  }
+}
