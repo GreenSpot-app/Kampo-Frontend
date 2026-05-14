@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Subscription } from '../../../domain/model/subscription.entity';
 import { SubscriptionStore } from '../../../application/subscription.store';
+import { SubscriptionCardComponent } from '../subscription-card/subscription-card.component';
+import { SubscriptionActionsComponent } from '../subscription-actions/subscription-actions.component';
 
 @Component({
   selector: 'app-subscription-view',
+  standalone: true,
+  imports: [CommonModule, SubscriptionCardComponent, SubscriptionActionsComponent],
   templateUrl: './subscription-view.component.html',
   styleUrls: ['./subscription-view.component.css']
 })
 export class SubscriptionViewComponent implements OnInit {
-
   subscriptions: Subscription[] = [];
   selectedSubscriptionId: number = 0;
   isLoading: boolean = false;

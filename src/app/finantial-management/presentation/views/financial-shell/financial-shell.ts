@@ -8,11 +8,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FinancialStore } from '../../../application/financial.store';
 import { FundoId } from '../../../domain/model/value-object/fundo-id.vo';
 import { SeasonId } from '../../../domain/model/value-object/season-id.vo';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-financial-shell',
   standalone: true,
   imports: [
+    CommonModule,
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
@@ -31,6 +33,7 @@ export class FinancialShellComponent {
   readonly fundoLabel = computed(() => this.store.selectedFundoId()?.getValue().toString() ?? '—');
   readonly seasonLabel = computed(() => this.store.selectedSeasonId()?.getValue().toString() ?? '—');
 
+
   readonly navLinks = [
     { path: 'gastos', label: 'Gastos', icon: 'receipt_long' },
     { path: 'ingresos', label: 'Ingresos', icon: 'trending_up' },
@@ -42,6 +45,7 @@ export class FinancialShellComponent {
     this.route.queryParamMap.pipe(takeUntilDestroyed()).subscribe((pm) => {
       const fundo = Number(pm.get('fundoId') ?? 1);
       const season = Number(pm.get('seasonId') ?? 1);
+
       this.store.loadRecord(new FundoId(fundo), new SeasonId(season));
     });
   }

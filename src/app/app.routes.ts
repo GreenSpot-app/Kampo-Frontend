@@ -2,12 +2,21 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'organization-management',
+    path: '',
     loadChildren: () =>
       import('./organization-management/presentation/views/organization-management.routes').then(
         (m) => m.ORGANIZATION_ROUTES
       ),
   },
+
+  {
+    path: 'profile-access',
+    loadChildren: () =>
+      import('./profile-access/presentation/views/profile-access.routes').then(
+        (m) => m.PROFILE_ACCESS_ROUTES
+      ),
+  },
+
   {
     path: 'season-management',
     loadChildren: () =>
@@ -15,6 +24,7 @@ export const routes: Routes = [
         (m) => m.SEASON_ROUTES
       ),
   },
+
   {
     path: 'inventory-management',
     loadChildren: () =>
@@ -22,6 +32,7 @@ export const routes: Routes = [
         (m) => m.INVENTORY_MANAGEMENT_ROUTES,
       ),
   },
+
   {
     path: 'finantial-management',
     loadChildren: () =>
@@ -29,11 +40,46 @@ export const routes: Routes = [
         (m) => m.FINANTIAL_MANAGEMENT_ROUTES,
       ),
   },
+
   {
-    path:'report-management',
-    loadChildren:()=>
+    path: 'report-management',
+    loadChildren: () =>
       import('./report/presentation/views/report.routes').then(
-        (m)=>m.REPORT_ROUTES,
+        (m) => m.REPORT_ROUTES,
       ),
   },
-  { path: '', pathMatch: 'full', redirectTo: 'organization-management' },]
+
+  {
+    path: 'employee-management',
+    loadChildren: () =>
+      import('./employee-management/presentation/views/employee.routes').then(
+        (m) => m.EMPLOYEE_ROUTES,
+      ),
+  },
+
+  {
+    path: 'field-operation',
+    loadChildren: () =>
+      import('./field-operation/presentation/views/field-operation.routes').then(
+        (m) => m.FIELD_OPERATION_ROUTES,
+      ),
+  },
+
+  {
+    path: 'alert-management',
+    loadChildren: () =>
+      import('./alert-management/presentation/views/alert.route').then(
+        (m) => m.ALERT_ROUTES,
+      ),
+  },
+
+  {
+    path: 'subscription',
+    loadChildren: () =>
+      import('./subscription/presentation/views/subscription.route').then(
+        (m) => m.SUBSCRIPTION_ROUTES,
+      ),
+  },
+
+  { path: '**', redirectTo: '' }
+];

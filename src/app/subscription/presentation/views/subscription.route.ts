@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { SubscriptionViewComponent } from './views/subscription-view/subscription.view.component';
+import { SubscriptionViewComponent } from './subscription-view/subscription.view.component';
 
 export const SUBSCRIPTION_ROUTES: Routes = [
   {
